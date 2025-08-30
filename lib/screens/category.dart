@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import '../widgets/service_grid.dart';
+import 'store_home_page.dart';
 
 class Category extends StatelessWidget {
   final String categoryTitle;
@@ -13,7 +15,7 @@ class Category extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFEDEEFF),
+      backgroundColor: Colors.white,
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(16),
@@ -54,49 +56,14 @@ class Category extends StatelessWidget {
 
               // Grid content
               Expanded(
-                child: GridView.builder(
-                  itemCount: services.length,
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                    mainAxisSpacing: 24,
-                    crossAxisSpacing: 24,
-                    childAspectRatio: 0.68,
-                  ),
-                  itemBuilder: (context, index) {
-                    final service = services[index];
-                    return Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        ClipRRect(
-                          borderRadius: BorderRadius.circular(14),
-                          child: AspectRatio(
-                            aspectRatio: 1,
-                            child: Image.asset(
-                              service['image']!,
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                        ),
-                        const SizedBox(height: 12),
-                        Text(
-                          service['title']!,
-                          style: const TextStyle(
-                            fontWeight: FontWeight.w600,
-                            fontSize: 14,
-                            color: Colors.black87,
-                          ),
-                        ),
-                        const SizedBox(height: 6),
-                        Text(
-                          service['subtitle']!,
-                          style: const TextStyle(
-                            fontSize: 12,
-                            color: Color(0xFF4F9A81),
-                          ),
-                          maxLines: 2,
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                      ],
+                child: ServiceGrid(
+                  services: services,
+                  onTap: (service) {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => StoreHomePage(), // or pass the data if needed
+                      ),
                     );
                   },
                 ),
