@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'explore_tab.dart';
+import 'screens/explore_tab.dart';
 
 class MainTabPage extends StatefulWidget {
   const MainTabPage({super.key});

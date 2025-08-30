@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'category.dart';
+import 'store_home_page.dart';
 
 class ExploreTab extends StatelessWidget {
   const ExploreTab({super.key});
@@ -143,13 +144,23 @@ class ExploreTab extends StatelessWidget {
               return Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(14),
-                    child: AspectRatio(
-                      aspectRatio: 1,
-                      child: Image.asset(
-                        service['image']!,
-                        fit: BoxFit.cover,
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => StoreHomePage(), // Make sure this class exists
+                        ),
+                      );
+                    },
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(14),
+                      child: AspectRatio(
+                        aspectRatio: 1,
+                        child: Image.asset(
+                          service['image']!,
+                          fit: BoxFit.cover,
+                        ),
                       ),
                     ),
                   ),
