@@ -1,3 +1,146 @@
+// import 'package:flutter/material.dart';
+// import 'category.dart';
+// import 'store_home_page.dart';
+// import '../widgets/service_grid.dart';
+//
+// class ExploreTab extends StatelessWidget {
+//   const ExploreTab({super.key});
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     final categories = [
+//       {'icon': Icons.restaurant, 'label': 'Chef'},
+//       {'icon': Icons.checkroom, 'label': 'Fashion'},
+//       {'icon': Icons.spa, 'label': 'Wellness'},
+//       {'icon': Icons.pets, 'label': 'Pet'},
+//       {'icon': Icons.class_, 'label': 'Class'},
+//     ];
+//
+//     final services = [
+//       {
+//         'title': 'Home Cleaning',
+//         'subtitle': 'Sarah’s Cleaning Services',
+//         'image': 'assets/home_cleaning.jpg',
+//       },
+//       {
+//         'title': 'Handyman',
+//         'subtitle': 'Mike\'s Handyman\nSolutions',
+//         'image': 'assets/handyman.jpg',
+//       },
+//       {
+//         'title': 'Personal Training',
+//         'subtitle': 'Emily’s Pet Sitting',
+//         'image': 'assets/personal_training.jpg',
+//       },
+//       {
+//         'title': 'Pet Care',
+//         'subtitle': 'Loving Care Pets',
+//         'image': 'assets/pet_care.jpg',
+//       },
+//       {
+//         'title': 'Photography',
+//         'subtitle': 'Capture Moments\nPhotography',
+//         'image': 'assets/photography.jpg',
+//       },
+//       {
+//         'title': 'Event Planning',
+//         'subtitle': 'Celebration Events',
+//         'image': 'assets/event_planning.jpg',
+//       },
+//     ];
+//
+//     return Scaffold(
+//       backgroundColor: Colors.white,
+//       body: SafeArea(
+//         child: Padding(
+//           padding: const EdgeInsets.all(16),
+//           child: ListView(
+//             children: [
+//               const SizedBox(height: 16),
+//               Row(
+//                 children: const [
+//                   Icon(Icons.location_on_outlined, color: Colors.black54),
+//                   SizedBox(width: 8),
+//                   Text(
+//                     "Select Location",
+//                     style: TextStyle(
+//                       color: Color(0xFF4F9A81),
+//                       fontWeight: FontWeight.w500,
+//                     ),
+//                   ),
+//                 ],
+//               ),
+//               const SizedBox(height: 20),
+//               const Text(
+//                 "Categories",
+//                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+//               ),
+//               const SizedBox(height: 12),
+//               SingleChildScrollView(
+//                 scrollDirection: Axis.horizontal,
+//                 child: Row(
+//                   children: categories.map((category) {
+//                     return GestureDetector(
+//                       onTap: () {
+//                         Navigator.push(
+//                           context,
+//                           MaterialPageRoute(
+//                             builder: (context) => Category(
+//                               categoryTitle: category['label'] as String,
+//                               services: services,
+//                             ),
+//                           ),
+//                         );
+//                       },
+//                       child: Padding(
+//                         padding: const EdgeInsets.only(right: 16),
+//                         child: Column(
+//                           children: [
+//                             CircleAvatar(
+//                               backgroundColor: const Color(0xFFC7E8D9),
+//                               radius: 30,
+//                               child: Icon(
+//                                 category['icon'] as IconData,
+//                                 color: Colors.black,
+//                                 size: 28,
+//                               ),
+//                             ),
+//                             const SizedBox(height: 6),
+//                             Text(
+//                               category['label'] as String,
+//                               style: const TextStyle(fontSize: 13),
+//                             ),
+//                           ],
+//                         ),
+//                       ),
+//                     );
+//                   }).toList(),
+//                 ),
+//               ),
+//               const SizedBox(height: 24),
+//               const Text(
+//                 "Trending Service",
+//                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+//               ),
+//               const SizedBox(height: 12),
+//               ServiceGrid(
+//                 services: services,
+//                 onTap: (service) {
+//                   Navigator.push(
+//                     context,
+//                     MaterialPageRoute(
+//                       builder: (context) => StoreHomePage(),
+//                     ),
+//                   );
+//                 },
+//               ),
+//             ],
+//           ),
+//         ),
+//       ),
+//     );
+//   }
+// }
 import 'package:flutter/material.dart';
 import 'category.dart';
 import 'store_home_page.dart';
@@ -49,93 +192,125 @@ class ExploreTab extends StatelessWidget {
       },
     ];
 
+
     return Scaffold(
-      backgroundColor: Colors.white,
       body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.all(16),
-          child: ListView(
-            children: [
-              const SizedBox(height: 16),
-              Row(
-                children: const [
-                  Icon(Icons.location_on_outlined, color: Colors.black54),
-                  SizedBox(width: 8),
-                  Text(
-                    "Select Location",
-                    style: TextStyle(
-                      color: Color(0xFF4F9A81),
-                      fontWeight: FontWeight.w500,
-                    ),
-                  ),
-                ],
+        child: Column(
+          children: [
+            // Top gradient bar
+            Container(
+              width: double.infinity,
+              height: 64,
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  colors: [Color(0xFF7AF1A7), Color(0xFF2B7FFF)],
+                ),
               ),
-              const SizedBox(height: 20),
-              const Text(
-                "Categories",
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
-              ),
-              const SizedBox(height: 12),
-              SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16.0),
                 child: Row(
-                  children: categories.map((category) {
-                    return GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => Category(
-                              categoryTitle: category['label'] as String,
-                              services: services,
+                  children: const [
+                    Icon(Icons.location_on_outlined, color: Colors.white),
+                    SizedBox(width: 8),
+                    Text(
+                      "Select Location",
+                      style: TextStyle(color: Colors.white, fontWeight: FontWeight.w500),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+
+            // Content below gradient bar
+            Expanded(
+              child: ListView(
+                padding: const EdgeInsets.all(16),
+                children: [
+                  const SizedBox(height: 24),
+                  const Text("Categories",
+                      style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
+                  const SizedBox(height: 12),
+                  // Category icons
+                  SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                      children: categories.map((category) {
+                        return GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => Category(
+                                  categoryTitle: category['label'] as String,
+                                  services: services, // Filter if necessary
+                                ),
+                              ),
+                            );
+                          },
+                          child: Padding(
+                            padding: const EdgeInsets.only(right: 16),
+                            child: Column(
+                              children: [
+                                Container(
+                                  width: 50,
+                                  height: 50,
+                                  decoration: BoxDecoration(
+                                    gradient: const LinearGradient(
+                                      colors: [Color(0xFF7AF1A7), Color(0xFF2B7FFF)],
+                                    ),
+                                    borderRadius: BorderRadius.circular(14),
+                                    border: Border.all(color: Colors.white),
+                                    boxShadow: const [
+                                      BoxShadow(
+                                        color: Colors.black12,
+                                        blurRadius: 6,
+                                        offset: Offset(0, 4),
+                                      ),
+                                    ],
+                                  ),
+                                  child: Icon(
+                                    category['icon'] as IconData,
+                                    color: Colors.white,
+                                    size: 24,
+                                  ),
+                                ),
+                                const SizedBox(height: 6),
+                                Text(
+                                  category['label'] as String,
+                                  style: const TextStyle(
+                                    fontSize: 12,
+                                    color: Color(0xFF1347E5),
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
                         );
-                      },
-                      child: Padding(
-                        padding: const EdgeInsets.only(right: 16),
-                        child: Column(
-                          children: [
-                            CircleAvatar(
-                              backgroundColor: const Color(0xFFC7E8D9),
-                              radius: 30,
-                              child: Icon(
-                                category['icon'] as IconData,
-                                color: Colors.black,
-                                size: 28,
-                              ),
-                            ),
-                            const SizedBox(height: 6),
-                            Text(
-                              category['label'] as String,
-                              style: const TextStyle(fontSize: 13),
-                            ),
-                          ],
-                        ),
-                      ),
-                    );
-                  }).toList(),
-                ),
-              ),
-              const SizedBox(height: 24),
-              const Text(
-                "Trending Service",
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
-              ),
-              const SizedBox(height: 12),
-              ServiceGrid(
-                services: services,
-                onTap: (service) {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => StoreHomePage(),
+                      }).toList(),
                     ),
-                  );
-                },
+                  ),
+
+                  const SizedBox(height: 24),
+                  const Text("Trending Services",
+                      style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
+                  const SizedBox(height: 12),
+
+                  ServiceGrid(
+                    services: services,
+                    onTap: (service) {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => StoreHomePage(),
+                        ),
+                      );
+                    },
+                  ),
+                ],
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

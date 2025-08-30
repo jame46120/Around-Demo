@@ -31,7 +31,7 @@ class _MainTabPageState extends State<MainTabPage> {
     return Scaffold(
       body: _tabs[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
-        selectedItemColor: const Color(0xFF4F9A81),
+        selectedItemColor: const Color(0xFF39B979),
         unselectedItemColor: Colors.black54,
         currentIndex: _currentIndex,
         onTap: _onTabTapped,
