@@ -22,7 +22,7 @@ class Category extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // Top bar with back arrow and title
+              // Back button row
               Row(
                 children: [
                   IconButton(
@@ -31,30 +31,19 @@ class Category extends StatelessWidget {
                     onPressed: () => Navigator.pop(context),
                   ),
                   const SizedBox(width: 4),
-                  // Text(
-                  //   categoryTitle,
-                  //   style: const TextStyle(
-                  //     fontSize: 18,
-                  //     fontWeight: FontWeight.bold,
-                  //     color: Colors.black87,
-                  //   ),
-                  // ),
+                  Text(
+                    categoryTitle,
+                    style: const TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black87,
+                    ),
+                  ),
                 ],
               ),
               const SizedBox(height: 12),
 
-              // Section Title
-              Text(
-                categoryTitle,
-                style: const TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.black87,
-                ),
-              ),
-              const SizedBox(height: 12),
-
-              // Grid content
+              // Scrollable grid view
               Expanded(
                 child: ServiceGrid(
                   services: services,
@@ -62,7 +51,7 @@ class Category extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => StoreHomePage(), // or pass the data if needed
+                        builder: (context) => StoreHomePage(),
                       ),
                     );
                   },

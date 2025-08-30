@@ -15,7 +15,7 @@ class ServiceGrid extends StatelessWidget {
     return GridView.builder(
       itemCount: services.length,
       shrinkWrap: true,
-      physics: const NeverScrollableScrollPhysics(),
+      physics: BouncingScrollPhysics(), // or ClampingScrollPhysics()
       padding: EdgeInsets.zero,
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
