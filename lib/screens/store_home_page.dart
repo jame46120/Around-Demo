@@ -29,7 +29,6 @@ class _StoreHomePageState extends State<StoreHomePage> {
                     onTap: () => Navigator.pop(context),
                     child: const Icon(Icons.arrow_back),
                   ),
-
                 ],
               ),
             ),
@@ -108,10 +107,36 @@ class _StoreHomePageState extends State<StoreHomePage> {
             // Content
             Expanded(
               child: SingleChildScrollView(
-                child: selectedTabIndex == 0 ? _buildStoreHome() : _buildServiceTab(),
+                child: selectedTabIndex == 0
+                    ? _buildStoreHome()
+                    : _buildServiceTab(),
               ),
             ),
           ],
+        ),
+      ),
+
+      // BOOK NOW BUTTON AT THE BOTTOM
+      bottomNavigationBar: Padding(
+        padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
+        child: ElevatedButton(
+          onPressed: () {},
+          style: ElevatedButton.styleFrom(
+            backgroundColor: const Color(0xFFCDF2E7),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(24),
+            ),
+            padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 14),
+          ),
+          child: const Text(
+            'Book Now',
+            style: TextStyle(
+              color: Color(0xFF0C1911),
+              fontSize: 16,
+              fontWeight: FontWeight.w700,
+              fontFamily: 'Plus Jakarta Sans',
+            ),
+          ),
         ),
       ),
     );
@@ -191,7 +216,7 @@ class _StoreHomePageState extends State<StoreHomePage> {
         const Padding(
           padding: EdgeInsets.symmetric(horizontal: 16),
           child: Text(
-            "Olivia Bennett is a highly skilled interior designer with over 10 years of experience. She specializes in creating beautiful and functional spaces that reflect her clients' unique styles and needs. Her expertise includes space planning, color coordination, furniture selection, and custom design solutions. Olivia is committed to delivering exceptional results and ensuring client satisfaction.",
+            "Olivia Bennett is a highly skilled interior designer with over 10 years of experience...",
             style: TextStyle(
               fontSize: 16,
               color: Color(0xFF0C1911),
@@ -200,7 +225,7 @@ class _StoreHomePageState extends State<StoreHomePage> {
           ),
         ),
 
-        // Reviews
+        // Reviews Title
         const Padding(
           padding: EdgeInsets.fromLTRB(16, 20, 16, 8),
           child: Text(
@@ -245,37 +270,13 @@ class _StoreHomePageState extends State<StoreHomePage> {
               ),
               const SizedBox(height: 8),
               const Text(
-                'Olivia transformed my living room into a stunning and functional space. Her attention to detail and creative ideas exceeded my expectations. I highly recommend her services!',
+                'Olivia transformed my living room... I highly recommend her services!',
                 style: TextStyle(
                   fontSize: 16,
                   fontFamily: 'Plus Jakarta Sans',
                 ),
               ),
             ],
-          ),
-        ),
-
-        // Book Now Button
-        Padding(
-          padding: const EdgeInsets.all(16),
-          child: ElevatedButton(
-            onPressed: () {},
-            style: ElevatedButton.styleFrom(
-              backgroundColor: const Color(0xFFCDF2E7),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(24),
-              ),
-              padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 12),
-            ),
-            child: const Text(
-              'Book Now',
-              style: TextStyle(
-                color: Color(0xFF0C1911),
-                fontSize: 16,
-                fontWeight: FontWeight.w700,
-                fontFamily: 'Plus Jakarta Sans',
-              ),
-            ),
           ),
         ),
       ],
@@ -286,7 +287,7 @@ class _StoreHomePageState extends State<StoreHomePage> {
     return const Padding(
       padding: EdgeInsets.all(16),
       child: Text(
-        'Service List (Placeholder)', // Replace with actual services widget
+        'Service List (Placeholder)',
         style: TextStyle(
           fontSize: 16,
           fontWeight: FontWeight.w600,
