@@ -14,6 +14,7 @@ class _MainTabPageState extends State<MainTabPage> {
   // Dummy screens (replace with actual screen widgets later)
   final List<Widget> _tabs = [
     const ExploreTab(),         // Explore content (your current screen)
+    Center(child: Text('Search')),
     Center(child: Text('My Booking')),
     Center(child: Text('Notification')),
     Center(child: Text('Account')),
@@ -35,7 +36,8 @@ class _MainTabPageState extends State<MainTabPage> {
         currentIndex: _currentIndex,
         onTap: _onTabTapped,
         items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.travel_explore), label: 'Explore'),
+          BottomNavigationBarItem(icon: Icon(Icons.explore), label: 'Explore'),
+          BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Search'),
           BottomNavigationBarItem(icon: Icon(Icons.calendar_today), label: 'My Booking'),
           BottomNavigationBarItem(icon: Icon(Icons.notifications), label: 'Notification'),
           BottomNavigationBarItem(icon: Icon(Icons.person_outline), label: 'Account'),

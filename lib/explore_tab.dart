@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'category.dart';
 
 class ExploreTab extends StatelessWidget {
   const ExploreTab({super.key});
@@ -64,22 +65,22 @@ class ExploreTab extends StatelessWidget {
               ),
             ],
           ),
-          const SizedBox(height: 12),
-          TextField(
-            decoration: InputDecoration(
-              hintText: "Search for services",
-              prefixIcon: const Icon(Icons.search),
-              contentPadding: const EdgeInsets.symmetric(vertical: 0),
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(12),
-                borderSide: const BorderSide(color: Color(0xFFC7E8D9)),
-              ),
-              enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(12),
-                borderSide: const BorderSide(color: Color(0xFFC7E8D9)),
-              ),
-            ),
-          ),
+          // const SizedBox(height: 12),
+          // TextField(
+          //   decoration: InputDecoration(
+          //     hintText: "Search for services",
+          //     prefixIcon: const Icon(Icons.search),
+          //     contentPadding: const EdgeInsets.symmetric(vertical: 0),
+          //     border: OutlineInputBorder(
+          //       borderRadius: BorderRadius.circular(12),
+          //       borderSide: const BorderSide(color: Color(0xFFC7E8D9)),
+          //     ),
+          //     enabledBorder: OutlineInputBorder(
+          //       borderRadius: BorderRadius.circular(12),
+          //       borderSide: const BorderSide(color: Color(0xFFC7E8D9)),
+          //     ),
+          //   ),
+          // ),
           const SizedBox(height: 20),
           const Text("Categories", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
           const SizedBox(height: 12),
@@ -87,18 +88,38 @@ class ExploreTab extends StatelessWidget {
             scrollDirection: Axis.horizontal,
             child: Row(
               children: categories.map((category) {
-                return Padding(
-                  padding: const EdgeInsets.only(right: 16),
-                  child: Column(
-                    children: [
-                      CircleAvatar(
-                        backgroundColor: const Color(0xFFC7E8D9),
-                        radius: 30,
-                        child: Icon(category['icon'] as IconData, color: Colors.black, size: 28),
+                return GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => Category(
+                          categoryTitle: category['label'] as String,
+                          services: services, // filter if needed
+                        ),
                       ),
-                      const SizedBox(height: 6),
-                      Text(category['label'] as String, style: const TextStyle(fontSize: 13)),
-                    ],
+                    );
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.only(right: 16),
+                    child: Column(
+                      children: [
+                        CircleAvatar(
+                          backgroundColor: const Color(0xFFC7E8D9),
+                          radius: 30,
+                          child: Icon(
+                            category['icon'] as IconData,
+                            color: Colors.black,
+                            size: 28,
+                          ),
+                        ),
+                        const SizedBox(height: 6),
+                        Text(
+                          category['label'] as String,
+                          style: const TextStyle(fontSize: 13),
+                        ),
+                      ],
+                    ),
                   ),
                 );
               }).toList(),
